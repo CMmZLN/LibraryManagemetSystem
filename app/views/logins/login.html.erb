@@ -1,0 +1,41 @@
+<div class="overFlow">
+
+  <div class="form-container", style= "margin-top:10%">
+
+  <%
+=begin%>
+ " url": htal mar login lote p lox twar mae route htae yan
+<%
+=end%>
+  <%= form_for :@users, url: "/login", class:"form", method: :post do |form| %>
+    <h1 style="text-align: center; margin-top:5%">ログイン</h1>
+    <div class="loginErrorMessage" style="color:red;font-weight:bold; font-size:18px; margin: 3% 0 3% 0%; ">
+      <% if @errorMessage.present? %>
+      <%= @errorMessage[0] %>
+      <% end %>
+    </div>
+    
+      <div class="p-2" style="margin-left: 8%;">
+        <%= form.text_field :roll_no, placeholder: "ロール番号" , id:"roleNo", class:"input role", maxlength:"50", name:"rollNo" %>
+      </div>
+
+      <div class="p-2" style="margin-left: 8%;">
+        <%= form.text_field :password, placeholder: " パスワード", class:"input", type:"password", maxlength:"20", name:"password" %>
+      </div>
+    
+    <div class="p-2" , style="margin: 0 auto;display:block">
+        <%= form.submit "ログイン", class:"signUpBtn", name: "login" %>
+    </div>
+
+    <div class="forLogin">
+          <p style="font-size: 18px" >
+              すでにアカウントをお持ちですか？ 
+              <%= link_to "サインアップ", "/user/new" %>
+          </p>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+

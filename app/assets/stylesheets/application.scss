@@ -1,0 +1,178 @@
+@import "./bootstrap-5.3.2-dist/css/bootstrap.min.css";
+@import "bootstrap.css";  
+:root{
+  --heading-fontSize: 32px;
+  --input-fontSize: 16px;
+  --buttom-fontSize: 18px;
+
+}
+
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  font-family: "MS Pゴシック";
+}
+
+body{
+  // background-color:#edeef6;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin:0;
+}
+/* --------------------For Sign Up Page------------------------- */
+.form{
+  margin-top: -20px;
+}
+.form input{
+  font-size: var(--input-fontSize);
+}
+.form h1{
+  font-size: var(--heading-fontSize);
+  font-weight: bold;
+}
+.error-message{
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  margin: 0 auto;
+  font-weight: bold;
+} 
+
+.error-message ul li{
+  list-style-type: none;
+  color:red
+}
+
+.form-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.form{
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  padding: 10px 50px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+ }
+ 
+ input {
+  padding: 5px 10px;
+  
+}
+
+.overFlow{
+  overflow:hidden;
+}
+/* .p-2{
+  margin-top: 10px;
+} */
+
+.input{
+  width:20em;
+  height: 2em;
+  border-radius: 5px;
+  border: 1px solid;
+  text-indent: 10px;
+  outline: none;
+}
+
+.forRadioBtn{
+  color: grey;
+  display: flex;
+  flex-direction:row;
+  gap: 24px;
+}
+
+.femaleRadioButton{
+  margin-left: 10px;
+}
+.signUpBtn{
+  background-color: black;
+  color:white;
+  border-radius:5px;
+  border: 1px solid black;
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.forLogin{
+  font-size: var(--buttom-fontSize);
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* ---------------For File Upload Button------------------- */
+
+
+.file{
+  display: none;
+}
+
+.search-btn{
+  padding: 4px 16px;
+  background-color: gray;
+  border-radius: 5px;
+  color: #fff  ;
+}
+/* --------------------For Modal Box----------------------- */
+.modal-btn{
+  background-color: #fff;
+  border: 0 solid #fff;
+  padding:10px 20px;
+  // box-shadow:0 2px 4px rgba(0,0,0,0.2)
+}
+.modal-container{
+  background-color: rgba(0, 0, 0, 0.3);
+  position:fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height:100vh;
+  width:100vw;
+  opacity: 0;
+  pointer-events: none;
+}
+.show{
+  pointer-events: auto;
+  opacity: 1;
+}
+// ------------------------- For Pagination Button -------------
+.page-item{
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+  margin: 0px 5px;
+}
+
+.pagi{
+  position: absolute;
+  bottom: 10%;
+}
+// --------------------------------------------------------------
+.borrowForm{
+  margin-top: 59px;
+  margin-left:199px
+}
+
+.show-due-date{
+  opacity:1
+}
+
+#book_no_of_copies{
+  margin-left: 74px;
+  width:320px;
+  height:33px;
+  border:1px solid black;
+  border-radius:5px;
+  padding-left:14px;
+}

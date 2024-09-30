@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+ 
+
+  <body style = "font-family: MS Pゴシック;">
+    <%= yield %>
+    
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "custom" %>
+    <%= javascript_include_tag "deleteBtn" %>
+    <%= javascript_include_tag "borrow" %>
+
+  </body>
+  
+   <%
+=begin%>
+ <script>
+    console.log("hello from application");
+    const deleteBtn = document.getElementById("deleteBtn");
+    const clickBtn = function(){
+      deleteBtn.addEventListener("click", (e) =>{
+      console.log("click btn");
+      });
+    };
+  </script> 
+<%
+=end%>
+</html>

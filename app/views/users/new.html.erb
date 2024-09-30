@@ -1,0 +1,65 @@
+
+<div class="form-container">
+  <%= form_for :user, url: "/user/create", class:"form", method: :post do |form| %>
+    <h1 style="text-align: center; padding-right: 15%; margin-top:10px; margin-bottom:17px ">サインアップ</h1>
+
+    <div class="error-message", style = "line-height:20px; letter-spacing:0.  1px; padding-right:19%">
+      <div style="width:24em;">
+        <% @user.errors.full_messages.each do |message| %>
+              <ul>
+                  <li>
+                      <%="-" + message %>
+                  </li> 
+              </ul>        
+        <%end%>
+      </div> 
+    </div>
+    <div class="p-2">
+        <%= form.text_field :name, placeholder: "ユーザー名称" , class:"input", maxlength:"20"%>
+    </div>
+    <div class="p-2">
+      <%= form.text_field :email, placeholder: "メールアドレス",class:"input", maxlength:"50"%>
+    </div>
+    <div class="p-2">
+      <%= form.text_field :password, placeholder: "パスワード", type: "password", class:"input",  maxlength:"20" %>
+    </div>
+    <div class="p-2 forRadioBtn">
+      <div>
+        <%= form.radio_button :gender, "男性", checked: "checked" %>
+        <%= form.label :gender_male, "男性" %>
+      </div>
+      <div class =".femaleRadioButton">
+        <%= form.radio_button :gender, "女性" %>
+        <%= form.label :gender_female, "女性" %>
+      </div>
+    </div>
+    <div class="p-2">
+      <%= form.text_field :tel, placeholder: "電話番号", :id=> "phoneNumber", class:"input", maxlength:"13" %>
+    </div>
+    <div class="p-2", style="margin-bottom:10px">
+      <%= form.text_field :roll_no, placeholder: "ロール番号", :id=> "roleNo",  class:"input roleNo", maxlength:"7"  %>
+    </div>
+
+    <div class="p-2", style="display:flex" >
+      <div>
+        <input type ="text" style="padding:5px; margin-right:20px" readonly id="textImg"  class="img-box input" placeholder="イメージ">
+      </div>
+      
+      <div >
+        <%= form.file_field :profile_image , class: "file", onchange: "myFunction(event)"%>
+        <%= form.label :profile_image, "選択", class: "search-btn"%>
+      </div> 
+    </div>
+
+    <div class="p-2" , style="margin: 0 auto;display:block">
+      <%= form.submit "サインアップ", class:"signUpBtn"%>
+    </div>
+
+    <div class="forLogin" style="font-size: 18px">
+      <p >
+        すでにアカウントをお持ちですか？
+        <%= link_to "ログイン", "/login" %>
+      </p>
+    </div>
+  <% end %>
+</div>

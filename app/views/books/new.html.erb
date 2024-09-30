@@ -1,0 +1,78 @@
+<div class="" style="height:100vh">
+
+  <div style="display:flex">
+    <nav class="col-3" style="">
+      <%= render "layouts/nav"%>
+    </nav>
+
+    <section class="col-9 ">
+      <div class="" style="width: 100%;height: 100%;display: flex; justify-content: center; align-items: center">
+
+       <%= form_for :book, url: "/admin/book/create",method: :post do |form| %>
+          <h1 style="text-align: center; padding-right: 15%;">Create New Book</h1>
+           <div class="error-message", style = "line-height:2px;    letter-spacing:0.  1px; padding-right:19%">
+              <div style="width:24em;">
+                <% @book.errors.full_messages.each do |message| %>
+                      <ul>
+                          <li>
+                              <%="-" + message %>
+                          </li> 
+                      </ul>        
+                <%end%>
+              </div> 
+            </div>
+         <div class="p-2 d-flex">
+            <label for="forTitle" class="fw-bold">本タイトル</label>
+            <%= form.text_field :title, placeholder: "Title" , class:"input", maxlength:"20", id:"forTitle", style:"margin-left:25px"%>
+          </div>
+          <div class="p-2 d-flex">
+            <label for="forAuthor" class="fw-bold">著者名</label>
+            <%= form.text_field :author, placeholder: "Author",class:"input", maxlength:"50", id:"forAuthor", style:"margin-left:57px"%>
+          </div>
+          <div class="p-2 d-flex">
+            <label for="forPrice" class="fw-bold">価格</label>
+            <%= form.text_field :price, placeholder: "Price", class:"input",  maxlength:"20", id:"forPrice", style:"margin-left:73px" %>
+          </div>
+        
+          <div class="p-2 d-flex">
+            <label for="forPages" class="fw-bold">ページ</label>
+            <%= form.text_field :pages, placeholder: "Pages", :id=> "forPages", class:"input", maxlength:"13", style:"margin-left:57px" %>
+          </div>
+          <div class="p-2 d-flex", style="margin-bottom:10px">
+            <label for="forPublisher" class="fw-bold">出版社</label>
+            <%= form.text_field :publisher, placeholder: "Publisher",  class:"input ", maxlength:"7", id:"forPublisher",style:"margin-left:57px"  %>
+          </div>
+
+          <div class="p-2 d-flex", style="margin-bottom:10px">
+
+            <label for="forNumberofCopy" class="fw-bold">部数</label>
+             <%= form.select :no_of_copies, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5], ["6",6], ["7",7], ["8",8], ["9",9], ["10",10]], :prompt => '', id:"forNumberofCopy", class:"input dropDown" ,style:"margin-left:72px;"  %>
+
+            
+          </div> 
+
+          <div class="p-2 d-flex", style="display:flex" >
+            
+            <div>
+              <label for="textImg" class="fw-bold">部数</label>
+              <input type ="text" style="padding:5px; margin-right:20px; margin-left:73px" readonly id="textImg"  class="img-box input" placeholder="イメージ">
+            </div>
+            
+            <div>
+              <%= form.file_field :book_image , class: "file", onchange: "myFunction(event)"%>
+              <%= form.label :book_image, "選択", class: "search-btn"%>
+            </div> 
+          </div>
+
+          <div class="p-2 btn-dark" , style="margin: 0 auto;display:block; margin-left:109px; margin-top:15px">
+            <%= form.submit "登録", class:"signUpBtn", class:"btn btn-dark", style:"margin-right:68px; width:99px" %>
+            <button class="btn btn-dark">
+              <a href="/admin/books/" style="text-decoration:none; color:white;">キャンセル</a>
+            </button>
+          </div>
+
+        <% end %>
+      </div> 
+    </section>
+  </div>
+</div>

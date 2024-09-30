@@ -1,0 +1,24 @@
+<ul>
+  <li>
+    <%=  @user.name%>
+  </li>
+  <li>
+    <%= @user.id%>   
+  </li>
+  <li>
+     <%= @user.email%>
+  </li>
+  <li>
+    <%= @user.gender%>
+  </li>
+  <li>
+    <%= @user.tel%>
+  </li>
+  <li>
+    <%= @user.roll_no%>
+  </li>
+  
+  <% if @user.profile_image.attached?%>
+    <%= image_tag @user.profile_image , style: "width:300px;height:300px"%>
+  <% end %>
+</ul>

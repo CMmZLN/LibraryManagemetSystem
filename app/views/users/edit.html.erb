@@ -1,0 +1,68 @@
+<%
+=begin%>
+ <h1>This is from /users/edit/ Page.</h1>  
+<%
+=end%>
+
+
+<div class="overFlow" style="display:flex">
+  <nav class="col-3">
+    <%= render "layouts/nav"%>
+  </nav>
+  
+  <section class="col-9 ">
+    <h1 class="mt-5 fs-32" style="text-align:center;">学生更新</h1>
+    <% @user.errors.full_messages.each do |message| %>
+      <div
+        style="margin-bottom: 8px;width:435px;font-weight: bold;font-size:medium;">
+        <div style="display: flex;flex-direction: column;gap: 5px;color: red;">
+          <li style="list-style-type:none;padding-left:29%"><%= message %></li>
+        </div>
+      </div>
+    <%end%>
+    <article class="mt-5 mb-5">
+      <%= form_for :user, url: "/admin/student/edit/#{@user.id}", method: :post do |form| %>
+        <%= form.hidden_field :id, value: @user.id %>
+        <div  style="margin-left:212px; margin-top:-20px">
+
+          <div class="p-2 mb-3 mt-2 d-flex align-items-center gap-3"  >
+            <label for="forName" class="fw-bold">ユーザ名称</label>
+            <%= form.text_field :name, placeholder: "ユーザー名称" , class:"input", maxlength:"20", id:"forName", style:"margin-left:94px"%>
+          </div>
+
+          <div class="p-2 mb-3 d-flex align-items-center gap-3" >
+            <label for="forEmail" class="fw-bold">メールアドレス</label>
+            <%= form.text_field :email, placeholder: "メールアドレス",  class:"input", maxlength:"50", id:"forEmail", style:"margin-left:62px" %>
+          </div>
+
+          <div class="p-2 mb-3 d-flex align-items-center gap-3" >
+            <label for="forTel" class="fw-bold" style=margin-right:10%>電話番号</label>
+            <%= form.text_field :tel, placeholder: "電話番号", :id=> "phoneNumber", class:"input", maxlength:"13", style:"margin-left:32px" %>
+          </div>
+
+          <div class="p-2 mb-3 d-flex align-items-center gap-3" style="display:flex">
+            <label for="textImg" class="fw-bold" style="margin-right:111px">イメージ</label>
+            <div style="display:flex">
+              <input type ="text" style="padding:5px; margin-right:20px" readonly id="textImg"  class="img-box input" placeholder="イメージ" value= "<% if @filename.present? %><%= @filename%> <%end%>">
+              <%= form.file_field :profile_image , class: "file", onchange: "myFunction(event)", style:"margin-left:10%"%>
+              <%= form.label :profile_image, "選択", class: "search-btn"%>
+            </div>
+          </div>
+        </div>
+        <div class="p-2 mt-4" style="margin-left:45%">
+          <%= form.submit "更新", class:"btn btn-dark", style:"margin-right:5%", name: "update" %>
+          <button class="btn btn-dark">
+            <a href="/admin/students" style="text-decoration:none; color:white;">キャンセル</a>
+          </button>
+        </div>
+      <% end %>
+    <article>
+  </section>
+</div>
+
+
+
+
+
+
+

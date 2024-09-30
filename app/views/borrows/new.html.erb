@@ -1,0 +1,50 @@
+<% current_user = User.find(session[:user_id]) %>
+<% user_id = current_user.id%>
+
+<div class="overFlow" style="height:100vh">
+
+  <div style="display:flex">
+    <nav class="col-3" style="">
+      <%= render "layouts/nav"%>
+    </nav>
+
+    
+    <section class="col-9 ">
+     
+      <h1 class="mt-3" style="text-align:center; font-weight:bold; margin-bottom:-8px">本を借り</h1>
+      <article>
+        <div style="">
+          <%= form_for :borrow, url: "/student/borrow_request/new/#{@book_id.id}", class: "borrowForm",method: :post do | form|%>
+            <%= form.hidden_field :book_id, value: @book_id.id  %>
+            <%= form.hidden_field :user_id, value:user_id  %>
+
+            <div class="error-message", style = "line-height:2px;    letter-spacing:0.  1px; padding-right:19%">
+              <div style="width:24em;">
+                <% @borrow.errors.full_messages.each do |message| %>
+                      <ul>
+                          <li>
+                              <%="-" + message %>
+                          </li> 
+                      </ul>        
+                <%end%>
+              </div> 
+            </div>
+
+            <div class="p-1 d-flex align-items-center  gap-3 ">
+              <%= form.label :borrow_date, "borrow date", style: "margin-right:48px; font-weight: bold;" %><br>
+              <%= form.date_field :borrow_date,maxlength: "50", id:"borrow-date", min:Date.current ,onchange: "dueDateFun()"%>
+            </div>
+            <div class="p-1 d-flex align-items-center gap-3">
+              <%= form.label :due_date, "due_date", id:"dueDateLable",style: "font-weight: bold;margin-right:80px; display:none"   %><br>
+              <%= form.text_field :due_date , style:"cursor:auto; border:none" ,readonly: true , id:"due-date" %>
+            </div>
+            <div class="p-1 mt-3" style="margin-left: 142px;">
+              <%= form.submit "更新", class:'btn btn-dark', style: "margin-right:20px" %>
+              <button class="btn btn-dark"><a href="/student/books" style="text-decoration: none;color: white;">キャンセル</a></button>
+            </div>
+          <%end%>
+        </div>
+      </article>
+    </section>
+  </div>
+</div>  
